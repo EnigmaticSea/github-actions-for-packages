@@ -5,6 +5,10 @@ on:
   push:
     paths:
       - "**Dockerfile**"
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository}}
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -65,7 +69,7 @@ jobs:
       with:
         contact: .
         push: true
-        tags: "/:main"
+        tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         secrets: |
           GIT_AUTH_TOKEN=${{secrets.GITHUB_TOKEN}}
