@@ -65,7 +65,7 @@ jobs:
       with:
         contact: .
         push: true
-        tags: ${{ steps.meta.output.tags}}
-        labels: ${{ steps.meta.output.labels }}
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
         secrets: |
           GIT_AUTH_TOKEN=${{secrets.GITHUB_TOKEN}}
